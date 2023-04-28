@@ -5,7 +5,7 @@ app = Flask(__name__)
 parsing.anonse()
 parsing.freebies()
 parsing.release()
-
+parsing.rumors()
 
 @app.route('/')
 def index():
@@ -43,7 +43,10 @@ def news3():
 
 @app.route('/news4.html')
 def news4():
-    return render_template('news4.html')
+    with open("rumors.txt", "rt") as f:
+        news_list = (f.read().split('\n'))
+
+    return render_template('news4.html', news=news_list)
 
 
 @app.route('/anonse.html')

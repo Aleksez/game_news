@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Игроновости</title>
+    <link rel="stylesheet" href="static/css/style.css">
+  </head>
+  <body bgcolor="#646464" topmargin="0" leftmargin="0">
+    <a href="menu.html"><button class="button button_activate button_group"
+                                     style="width: 200px; padding: 20px 0px; font-size: 30px;">
+        Меню</button></a>
+    <a href="news1.html"><button class="button button_activate button_group"
+                                     style="width: 200px; padding: 20px 0px; font-size: 30px;">
+        Анонсы</button></a>
+    <a href="news2.html"><button class="button button_activate button_group"
+                                     style="width: 200px; padding: 20px 0px; font-size: 30px;">
+        Релизы</button></a>
+    <a href="news3.html"><button class="button button_activate button_group"
+                                     style="width: 200px; padding: 20px 0px; font-size: 30px;">
+        Скидки</button></a>
+    <a href="news4.html"><button disabled class="button button_group button_activated"
+                                     style="width: 200px; padding: 20px 0px; font-size: 30px; background-color: #000000;
+                                     color: white; box-shadow: 0 15px #000000; padding: 3px 0px;">
+        <br>Слухи</button></a>
+    <br>
+    <br><br><br>
+    {% for item in news %}
+        <h2><br>{{item}}</h2>
+    {% endfor %}
+  </body>
+</html>

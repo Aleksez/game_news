@@ -97,3 +97,33 @@ def freebies():
     f = open('freebies.txt', 'w')
     for i in freebies_list:
         f.write(i + '\n')
+def rumors():
+    list_card_url = []
+
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) '
+                      'Chrome/53.0.2785.143 Safari/537.36'
+    }
+    rumors_list = []
+    for page in range(1, 4):
+        s = 0
+        url = f'https://www.playground.ru/news/rumors?p={page}'
+        resp = requests.get(url, headers=headers)
+        soup = BeautifulSoup(resp.text, 'lxml')
+        data = soup.find_all('div', class_="post-content")
+        rumors_name = []
+        for i in data:
+            rumors = i.find('div', class_="post-title")
+            text = rumors.find('a').text
+            rumors_name.append(text)
+        data = soup.find_all('div', class_="post-content")
+        for i in data:
+            rumors = i.find('div', class_="post-metadata")
+            inf = rumors.find('div')
+            rumors_time = inf.find('time').text
+            rumors_list.append(rumors_time + '  ' + rumors_name[s])
+            s += 1
+
+    f = open('rumors.txt', 'w')
+    for i in rumors_list:
+        f.write(i + '\n')
